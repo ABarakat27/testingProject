@@ -12,6 +12,7 @@ public class Main {
 
         // Test all the attributes in the Account class for each account
         account1.deposit(100.0);
+
         account1.withdraw(50.0);
         account1.transfer(75.0, account2);
         account1.addLinkedAccount(account2);

@@ -1,5 +1,4 @@
 package com.company;
-import com.company.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +9,7 @@ public class Account {
     private List<Transaction> transactionHistory;
     private List<Account> linkedAccounts;
     private List<Notification> notifications;
+    private boolean isClosed;
 
     public Account(int accountNumber, double balance) {
         this.accountNumber = accountNumber;
@@ -74,8 +74,9 @@ public class Account {
         }
     }
 
-    private void receiveTransfer(double amount, Account sender) {
+    public void receiveTransfer(double amount, Account sender) {
         balance += amount;
+        sender.withdraw(amount); //added code
         transactionHistory.add(new Transaction(amount, "Transfer from account " + sender.getAccountNumber()));
         notifyUser("Transfer of " + amount + " from account " + sender.getAccountNumber() + " has been credited.");
     }
@@ -116,13 +117,14 @@ public class Account {
             return availableBalance;
         }
     }
-    private boolean isClosed;
-    public void closeAccount() {
-        // perform any necessary tasks to close the account (e.g. transfer remainingbalance, issue a check, etc.)
-        isClosed = true;
-    }
 
-    public boolean isClosed() {
+   public void closeAccount(){
+        isClosed=true;
+
+
+   }
+   public boolean isClosed(){
+
         return isClosed;
-    }
+   }
 }
