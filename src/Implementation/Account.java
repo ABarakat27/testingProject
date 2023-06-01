@@ -5,8 +5,21 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Account {
-
+    private double Balance;
     ArrayList<BankStatement>statements=new ArrayList<BankStatement>();
+    public Account(double amount){
+        Balance=amount;
+
+    }
+
+    public double getBalance() {
+        return Balance;
+    }
+
+    public void setBalance(double amount) {
+        Balance= amount;
+    }
+
 
 
     private BankStatement intiateAStatement(String operation,double amount){
@@ -22,4 +35,13 @@ public class Account {
 
 
 
+    public void transfer(double amount,Account x) throws InsufficientBalanceException {
+        if(Balance>amount) {
+            x.setBalance(x.getBalance() + amount);
+            Balance -= amount;
+        }
+        else
+            throw new InsufficientBalanceException();
+
+    }
 }
