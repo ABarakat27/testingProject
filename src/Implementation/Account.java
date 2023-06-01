@@ -8,7 +8,9 @@ import java.util.Map;
 
 public class Account {
     private double Balance;
-    //ArrayList<BankStatement>statements=new ArrayList<BankStatement>();
+    ArrayList<BankStatement>transferStatements=new ArrayList<BankStatement>();
+    ArrayList<BankStatement>buyItemsStatements=new ArrayList<BankStatement>();
+    ArrayList<BankStatement>payBillsStatements=new ArrayList<BankStatement>();
     Map<String,ArrayList<BankStatement>> statements= new HashMap<String,ArrayList<BankStatement>>();
     public Account(double amount){
         Balance=amount;
