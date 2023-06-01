@@ -3,10 +3,13 @@ package Implementation;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Account {
     private double Balance;
-    ArrayList<BankStatement>statements=new ArrayList<BankStatement>();
+    //ArrayList<BankStatement>statements=new ArrayList<BankStatement>();
+    Map<String,ArrayList<BankStatement>> statements= new HashMap<String,ArrayList<BankStatement>>();
     public Account(double amount){
         Balance=amount;
 
