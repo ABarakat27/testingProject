@@ -10,26 +10,48 @@ public class NotifyUserTest {
     static Account a ;
     static Account b ;
     static  item i;
+    static  PayBill pb;
     @BeforeClass
-    public static void start() throws InsufficientBalanceException, noOfItemsException {
+    public static void start() throws InsufficientBalanceException, PaidException {
+
+ try {
+     a = new Account(5000);
+     b = new Account(5000);
+     i = new item(15, 3);
+     pb = new PayBill(15, "Gas");
+     a.transfer(100, b);
+     a.BuyItem(i, 2);
+     a.payBill(pb);
 
 
-        a = new Account(5000);
-        b = new Account(5000);
-        i =new item(15,3);
-        a.transfer(100,b);
-        a.BuyItem(i,2);
+ }catch (InsufficientBalanceException |PaidException e){
 
+        }
         System.out.println("start testing");
     }
     @org.junit.Test
-    public void showNotificationsAfterTransfer() throws InsufficientBalanceException {
+    public void showNotificationsAfterTransfer()  {
 
         assertEquals("A successful transaction has been made",a.getNotifications().get(0) );
     }
     @org.junit.Test
-    public void showNotificationsAfterBuyingItem() throws InsufficientBalanceException {
+    public void showNotificationsAfterBuyingItem()  {
 
         assertEquals("A successful transaction has been made",a.getNotifications().get(1) );
     }
+    @org.junit.Test
+    public void showNotificationsPayBill()  {
+
+        assertEquals("A successful transaction has been made",a.getNotifications().get(2) );
+    }
+    @org.junit.Test
+    public void showNotificationsPayBillFailed()  {
+    try{
+        a.payBill(pb);
+    }catch(InsufficientBalanceException |PaidException e) {
+        assertEquals("A failed transaction has been made", a.getNotifications().get(3));
+    }
+    }
+
+
 }
