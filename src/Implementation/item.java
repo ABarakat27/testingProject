@@ -1,8 +1,8 @@
 package Implementation;
 
 public class item {
-  double price;
-    int noOfItems;
+    private double price;
+    private int noOfItems;
 
     public item(double price,int noOfItems) {
         this.price = price;
