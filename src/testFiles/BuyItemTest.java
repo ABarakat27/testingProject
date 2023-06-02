@@ -32,7 +32,7 @@ public class BuyItemTest {
 
 
         try {
-            new Account(0).BuyItem(new item(8000, 10), 1);// dont know if it is written like that or not
+            new Account(0).BuyItem(new item(8000, 10), 1);
         }
         catch (InsufficientBalanceException e){
             System.out.println("handle it ");
