@@ -47,25 +47,30 @@ public class Account {
         return s;
     }
 
-    private String notifyUser() {
-        return "A successful transaction has been made";
+    private String notifyUser(boolean succes) {
+        if(succes)
+            return "A successful transaction has been made";
+        else
+            return "A failed transaction has been made";
     }
 
 
     public void transfer(double amount, Account x) throws InsufficientBalanceException {
-        if (Balance > amount) {
+        if (Balance >= amount) {
             x.setBalance(x.getBalance() + amount);
             Balance -= amount;
             transferStatements.add(intiateAStatement("transfer", amount));
             statements.put("transfer", transferStatements);
-            notifications.add(notifyUser());
+            notifications.add(notifyUser(true));
 
-        } else
+        } else {
+            notifications.add(notifyUser(false));
             throw new InsufficientBalanceException();
+        }
 
     }
 
-    public void BuyItem(item x, int noOfItems) throws InsufficientBalanceException {
+    public void BuyItem(item x, int noOfItems) throws InsufficientBalanceException,noOfItemsException {
 
             if (noOfItems * x.getPrice() <= Balance && x.getNoOfItems() >= noOfItems) {
                 Balance -= (noOfItems * x.getPrice());
@@ -73,9 +78,17 @@ public class Account {
 
                 buyItemsStatements.add(intiateAStatement("BuyItem", noOfItems * x.getPrice()));
                 statements.put("BuyItem", buyItemsStatements);
-                notifications.add(notifyUser());
-            } else
+                notifications.add(notifyUser(true));
+            } else if (x.getNoOfItems() < noOfItems) {
+                notifications.add(notifyUser(false));
+                throw new noOfItemsException();
+            }
+
+
+            else {
+                notifications.add(notifyUser(false));
                 throw new InsufficientBalanceException();
+            }
 
 
 
@@ -86,9 +99,18 @@ public class Account {
         if(pb.getCost()<=Balance && !pb.isPaid()){
             Balance-=pb.getCost();
             pb.setPaid(true);
+            payBillsStatements.add(intiateAStatement("PayBill", pb.getCost()));
+            statements.put("BuyItem", payBillsStatements);
+            notifications.add(notifyUser(true));
         }
-        else if(!pb.isPaid()){throw new PaidException();}
-        else throw new InsufficientBalanceException();
+        else if(pb.isPaid()){
+            notifications.add(notifyUser(false));
+            throw new PaidException();
+        }
+        else {
+            notifications.add(notifyUser(false));
+            throw new InsufficientBalanceException();
+        }
 
     }
 }
