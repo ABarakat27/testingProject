@@ -44,9 +44,23 @@ public class Account {
         if(Balance>amount) {
             x.setBalance(x.getBalance() + amount);
             Balance -= amount;
+           transferStatements.add(intiateAStatement("transfer",amount));
+           statements.put("transfer",transferStatements);
+
         }
         else
             throw new InsufficientBalanceException();
+
+    }
+    public void  BuyItem(item x,int noOfItems) throws InsufficientBalanceException {
+
+        if(noOfItems * x.getPrice()<=Balance && x.getNoOfItems()>=noOfItems) {
+            Balance -= (noOfItems * x.getPrice());
+            x.setNoOfItems(x.getNoOfItems()-noOfItems);
+        }
+            else
+            throw new InsufficientBalanceException();
+
 
     }
 }
