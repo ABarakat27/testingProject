@@ -24,7 +24,7 @@ public class NotifyUserTest {
      a.payBill(pb);
 
 
- }catch (InsufficientBalanceException |PaidException e){
+ }catch (InsufficientBalanceException | PaidException | noOfItemsException e){
 
         }
         System.out.println("start testing");
