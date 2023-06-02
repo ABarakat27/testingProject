@@ -65,17 +65,23 @@ public class Account {
 
     }
 
-    public void BuyItem(item x, int noOfItems) throws InsufficientBalanceException {
+    public void BuyItem(item x, int noOfItems) throws InsufficientBalanceException,noOfItemsException {
 
-            if (noOfItems * x.getPrice() <= Balance && x.getNoOfItems() >= noOfItems) {
-                Balance -= (noOfItems * x.getPrice());
-                x.setNoOfItems(x.getNoOfItems() - noOfItems);
+        if (noOfItems * x.getPrice() <= Balance && x.getNoOfItems() >= noOfItems) {
+            Balance -= (noOfItems * x.getPrice());
+            x.setNoOfItems(x.getNoOfItems() - noOfItems);
 
-                buyItemsStatements.add(intiateAStatement("BuyItem", noOfItems * x.getPrice()));
-                statements.put("BuyItem", buyItemsStatements);
-                notifications.add(notifyUser());
-            } else
-                throw new InsufficientBalanceException();
+            buyItemsStatements.add(intiateAStatement("BuyItem", noOfItems * x.getPrice()));
+            statements.put("BuyItem", buyItemsStatements);
+            notifications.add(notifyUser());
+        }
+
+        else if (x.getNoOfItems() < noOfItems)
+            throw new noOfItemsException();
+
+
+        else
+            throw new InsufficientBalanceException();
 
 
 
@@ -87,7 +93,7 @@ public class Account {
             Balance-=pb.getCost();
             pb.setPaid(true);
         }
-        else if(!pb.isPaid()){throw new PaidException();}
+        else if(pb.isPaid()){throw new PaidException();}
         else throw new InsufficientBalanceException();
 
     }

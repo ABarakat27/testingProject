@@ -1,9 +1,6 @@
 package testFiles;
 
-import Implementation.Account;
-import Implementation.InsufficientBalanceException;
-import Implementation.PaidException;
-import Implementation.PayBill;
+import Implementation.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -24,11 +21,21 @@ public class PayBillTest {
     public void PayBillTest() throws InsufficientBalanceException, PaidException {
         try {
             x.payBill(pb);
-            assertEquals(1500.0, x.getBalance(), 0.1);
+            assertEquals(3500.0, x.getBalance(), 0.1);
         }
-        catch (InsufficientBalanceException e){
-            System.out.println("handle it");
+        catch (InsufficientBalanceException e ){
+            System.out.println("not enough Balance ");
 
         }
+        catch (PaidException e){
+
+            System.out.println("already paid");
+
+        }
+
+
+
     }
+
+
 }

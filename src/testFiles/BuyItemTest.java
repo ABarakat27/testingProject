@@ -3,6 +3,7 @@ package testFiles;
 import Implementation.Account;
 import Implementation.InsufficientBalanceException;
 import Implementation.item;
+import Implementation.noOfItemsException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -19,10 +20,11 @@ public class BuyItemTest {
         System.out.println("start testing");
     }
     @Test
-    public void BuyItemTest() throws InsufficientBalanceException {
+    public void BuyItemTest() throws InsufficientBalanceException, noOfItemsException {
 
-        x.BuyItem(y,5);
-        assertEquals(3000,x.getBalance(),0.1);
+            x.BuyItem(y, 5);
+            assertEquals(3000, x.getBalance(), 0.1);
+
 
 
 
@@ -35,8 +37,10 @@ public class BuyItemTest {
             new Account(0).BuyItem(new item(8000, 10), 1);
         }
         catch (InsufficientBalanceException e){
-            System.out.println("handle it ");
+            System.out.println("not enough Balance ");
 
+        } catch (noOfItemsException e) {
+            System.out.println("not enough products");
         }
     }
     }

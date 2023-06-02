@@ -11,7 +11,7 @@ public class NotifyUserTest {
     static Account b ;
     static  item i;
     @BeforeClass
-    public static void start() throws InsufficientBalanceException {
+    public static void start() throws InsufficientBalanceException, noOfItemsException {
 
 
         a = new Account(5000);
