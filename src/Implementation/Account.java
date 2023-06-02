@@ -8,14 +8,16 @@ import java.util.Map;
 
 public class Account {
     private double Balance;
-    ArrayList<BankStatement>transferStatements=new ArrayList<BankStatement>();
-    ArrayList<BankStatement>buyItemsStatements=new ArrayList<BankStatement>();
-    ArrayList<BankStatement>payBillsStatements=new ArrayList<BankStatement>();
-    Map<String,ArrayList<BankStatement>> statements= new HashMap<String,ArrayList<BankStatement>>();
+    private ArrayList<BankStatement>transferStatements=new ArrayList<BankStatement>();
+    private ArrayList<BankStatement>buyItemsStatements=new ArrayList<BankStatement>();
+    private ArrayList<BankStatement>payBillsStatements=new ArrayList<BankStatement>();
+    private ArrayList<String>notifications=new ArrayList<String>();
+    private Map<String,ArrayList<BankStatement>> statements= new HashMap<String,ArrayList<BankStatement>>();
     public Account(double amount){
         Balance=amount;
 
     }
+
 
     public double getBalance() {
         return Balance;
@@ -25,7 +27,12 @@ public class Account {
         Balance= amount;
     }
 
-
+    public ArrayList<String> getNotifications(){
+        return notifications;
+    }
+    public Map<String,ArrayList<BankStatement>> getStatements(){
+        return statements;
+    }
 
     private BankStatement intiateAStatement(String operation,double amount){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -38,6 +45,10 @@ public class Account {
         return  s ;
     }
 
+    private String notifyUser(){
+        return "A successful transaction has been made";
+    }
+
 
 
     public void transfer(double amount,Account x) throws InsufficientBalanceException {
@@ -46,6 +57,7 @@ public class Account {
             Balance -= amount;
            transferStatements.add(intiateAStatement("transfer",amount));
            statements.put("transfer",transferStatements);
+           notifications.add(notifyUser());
 
         }
         else
@@ -60,6 +72,7 @@ public class Account {
 
             buyItemsStatements.add(intiateAStatement("BuyItem",noOfItems * x.getPrice()));
             statements.put("BuyItem",buyItemsStatements);
+            notifications.add(notifyUser());
         }
             else
             throw new InsufficientBalanceException();
