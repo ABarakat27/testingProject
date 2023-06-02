@@ -36,8 +36,12 @@ public class AccountTest {
          x.BuyItem(y,5);
          assertEquals(3000,x.getBalance(),0.1);
 
-
-
     }
-
+    @Test
+    public void PayBillTest() throws InsufficientBalanceException , PaidException{
+        Account x=new Account(2000);
+        PayBill pb=new PayBill(500.0,"electricity");
+        x.payBill(pb);
+        assertEquals(1500.0,x.getBalance(),0.1);
+    }
 }

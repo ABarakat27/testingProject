@@ -79,4 +79,13 @@ public class Account {
 
 
     }
+    public void payBill(PayBill pb) throws InsufficientBalanceException , PaidException {
+        if(pb.getCost()<=Balance && !pb.isPaid()){
+            Balance-=pb.getCost();
+            pb.setPaid(true);
+        }
+        else if(!pb.isPaid()){throw new PaidException();}
+        else throw new InsufficientBalanceException();
+
+    }
 }
