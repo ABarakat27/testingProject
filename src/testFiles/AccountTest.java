@@ -19,15 +19,12 @@ public class AccountTest {
 
 
     }
-    @Test
-    public void InsufficientBalance()  {
+    @Test(expected = InsufficientBalanceException.class)
+    public void InsufficientBalance() throws InsufficientBalanceException {
 
-        try {
-            // new Account(0).transfer(1000,new Account(1000));
-            new Account(0).BuyItem(new item(8000, 10), 1);// dont know if it is written like that or not
-        }catch(InsufficientBalanceException e){
-            System.out.println("i handeled it");
-        }
+
+        new Account(0).transfer(1000,new Account(1000));
+        new Account(0).BuyItem(new item(8000,10),1);// dont know if it is written like that or not
 
     }
 
