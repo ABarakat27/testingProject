@@ -57,6 +57,9 @@ public class Account {
         if(noOfItems * x.getPrice()<=Balance && x.getNoOfItems()>=noOfItems) {
             Balance -= (noOfItems * x.getPrice());
             x.setNoOfItems(x.getNoOfItems()-noOfItems);
+
+            buyItemsStatements.add(intiateAStatement("BuyItem",noOfItems * x.getPrice()));
+            statements.put("BuyItem",buyItemsStatements);
         }
             else
             throw new InsufficientBalanceException();
