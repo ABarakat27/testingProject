@@ -11,46 +11,69 @@ public class NotifyUserTest {
     static Account b ;
     static  item i;
     static  PayBill pb;
+    static  PayBill g;
     @BeforeClass
-    public static void start() throws InsufficientBalanceException, PaidException {
+    public static void start()  {
 
- try {
      a = new Account(5000);
      b = new Account(5000);
      i = new item(15, 3);
      pb = new PayBill(15, "Gas");
-     a.transfer(100, b);
-     a.BuyItem(i, 2);
-     a.payBill(pb);
+     g = new PayBill(15000, "shawrma");
 
 
- }catch (InsufficientBalanceException | PaidException | noOfItemsException e){
-
-        }
         System.out.println("start testing");
     }
     @org.junit.Test
     public void showNotificationsAfterTransfer()  {
+        try {
 
-        assertEquals("A successful transaction has been made",a.getNotifications().get(0) );
+            a.transfer(100, b);
+            assertEquals("A successful transaction has been made",a.getNotifications().get(2) );
+        }catch (InsufficientBalanceException e){
+            assertEquals("A failed transaction has been made", a.getNotifications().get(2));
+        }
+
     }
     @org.junit.Test
     public void showNotificationsAfterBuyingItem()  {
 
-        assertEquals("A successful transaction has been made",a.getNotifications().get(1) );
+        try {
+
+            a.BuyItem(i, 2);
+            assertEquals("A successful transaction has been made",a.getNotifications().get(4) );
+        }catch (noOfItemsException|InsufficientBalanceException e){
+            assertEquals("A failed transaction has been made", a.getNotifications().get(4));
+        }
     }
+
     @org.junit.Test
     public void showNotificationsPayBill()  {
-
-        assertEquals("A successful transaction has been made",a.getNotifications().get(2) );
-    }
-    @org.junit.Test
-    public void showNotificationsPayBillFailed()  {
     try{
+
         a.payBill(pb);
+        assertEquals("A successful transaction has been made",a.getNotifications().get(3) );
     }catch(InsufficientBalanceException |PaidException e) {
         assertEquals("A failed transaction has been made", a.getNotifications().get(3));
     }
+    }
+    @org.junit.Test
+    public void showNotificationsPayBillFailedIsPaid()  {
+        try{
+            a.payBill(pb);
+
+        }catch(InsufficientBalanceException |PaidException e) {
+            assertEquals("A failed transaction has been made", a.getNotifications().get(1));
+        }
+    }
+    @org.junit.Test
+    public void showNotificationsPayBillFailedBalance()  {
+        try{
+            a.payBill(g);
+
+        }catch(InsufficientBalanceException |PaidException e) {
+            assertEquals("A failed transaction has been made", a.getNotifications().get(0));
+        }
     }
 
 

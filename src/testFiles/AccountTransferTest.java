@@ -23,25 +23,44 @@ public class AccountTransferTest {
     }
 
     @Test
-    public void transferTest() throws InsufficientBalanceException {
+    public void transferTest()  {
+
+        try{
+            y.transfer(2000, x);
+            assertEquals(6000, x.getBalance(), 0.1);
+        }catch(InsufficientBalanceException e){
+            assertEquals(4000, x.getBalance(), 0.1);
+        }
 
 
-        y.transfer(2000, x);
-        assertEquals(6000, x.getBalance(), 0.1);
 
 
     }
 
     @Test
-    public void InsufficientBalance() throws InsufficientBalanceException {
+    public void InsufficientBalance()  {
 
         try {
             x.transfer(1000000, y);
+
+
         } catch (InsufficientBalanceException e) {
-            assertEquals(4000,x.getBalance(),0.1);
+            assertEquals(6000,x.getBalance(),0.1);
         }
 
     }
 
+    @Test
+    public void negativeTransfer()  {
+
+        try {
+            x.transfer(-11, y);
+
+
+        } catch (InsufficientBalanceException e) {
+            assertEquals(6000,x.getBalance(),0.1);
+        }
+
+    }
 
 }

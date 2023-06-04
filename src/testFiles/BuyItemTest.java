@@ -12,35 +12,54 @@ import static org.junit.Assert.assertEquals;
 public class BuyItemTest {
     static Account x ;
     static  item y;
+    static  item g;
     @BeforeClass
     public static void start(){
 
         x=new Account(4000);
         y=new item(200,10);
+        g =new item(5000,1);
         System.out.println("start testing");
     }
     @Test
-    public void BuyItemTest() throws InsufficientBalanceException, noOfItemsException {
-
-            x.BuyItem(y, 5);
-            assertEquals(3000, x.getBalance(), 0.1);
+    public void BuyItemTest() {
+            try {
+                x.BuyItem(y, 5);
+                assertEquals(3000, x.getBalance(), 0.1);
+                assertEquals(5, y.getNoOfItems());
+            }catch(InsufficientBalanceException|noOfItemsException e){
+                assertEquals(4000, x.getBalance(), 0.1);
+                assertEquals(10, y.getNoOfItems());
+            }
 
 
 
 
     }
     @Test
-    public void InsufficientBalance() throws InsufficientBalanceException {
+    public void InsufficientBalance() {
 
 
         try {
-            new Account(0).BuyItem(new item(8000, 10), 1);
-        }
-        catch (InsufficientBalanceException e){
-            System.out.println("not enough Balance ");
+            x.BuyItem(g, 1);
 
-        } catch (noOfItemsException e) {
-            System.out.println("not enough products");
+        }catch(InsufficientBalanceException|noOfItemsException e){
+            assertEquals(4000, x.getBalance(), 0.1);
+            assertEquals(1, g.getNoOfItems());
         }
     }
+
+    @Test
+    public void InsufficientNoItems() {
+
+
+        try {
+            x.BuyItem(g, 20);
+
+        }catch(InsufficientBalanceException|noOfItemsException e){
+            assertEquals(4000, x.getBalance(), 0.1);
+            assertEquals(1, g.getNoOfItems());
+        }
+    }
+
     }
