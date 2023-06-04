@@ -13,20 +13,21 @@ import static org.junit.Assert.assertEquals;
 public class AccountTransferTest {
 
     static Account x;
-
+    static Account y;
     @BeforeClass
     public static void start() {
 
         x = new Account(4000);
+        y=new Account(5000);
         System.out.println("start testing");
     }
 
     @Test
     public void transferTest() throws InsufficientBalanceException {
-        Account x = new Account(1000);
-        Account y = new Account(5000);
+
+
         y.transfer(2000, x);
-        assertEquals(3000, x.getBalance(), 0.1);
+        assertEquals(6000, x.getBalance(), 0.1);
 
 
     }
@@ -35,9 +36,9 @@ public class AccountTransferTest {
     public void InsufficientBalance() throws InsufficientBalanceException {
 
         try {
-            new Account(0).transfer(1000, new Account(1000));
+            x.transfer(1000000, y);
         } catch (InsufficientBalanceException e) {
-            System.out.println("handle it");
+            assertEquals(4000,x.getBalance(),0.1);
         }
 
     }
