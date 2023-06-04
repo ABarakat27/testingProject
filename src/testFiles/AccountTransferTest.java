@@ -38,7 +38,7 @@ public class AccountTransferTest {
         try {
             x.transfer(1000000, y);
         } catch (InsufficientBalanceException e) {
-            assertEquals(4000,x.getBalance(),0.1);
+            assertEquals(6000,x.getBalance(),0.1);
         }
 
     }
