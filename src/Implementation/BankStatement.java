@@ -12,6 +12,12 @@ public class BankStatement {
     public String getOperationType() {
         return statementBody.get(0);
     }
+    public String getAmount() {
+        return statementBody.get(1);
+    }
+    public String getTime() {
+        return statementBody.get(2);
+    }
 
 
 }

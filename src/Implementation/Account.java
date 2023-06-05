@@ -100,7 +100,7 @@ public class Account {
             Balance-=pb.getCost();
             pb.setPaid(true);
             payBillsStatements.add(intiateAStatement("PayBill", pb.getCost()));
-            statements.put("BuyItem", payBillsStatements);
+            statements.put("PayBill", payBillsStatements);
             notifications.add(notifyUser(true));
         }
         else if(pb.isPaid()){
