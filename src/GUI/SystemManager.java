@@ -174,4 +174,14 @@ public class SystemManager {
     public Map<String, ArrayList<BankStatement>> getStatements(){
          return loggedInAccount.getStatements();
     }
+//    public boolean buyItem(String itemName,int n){
+//        item myItem=null;
+//        for (item i:itemsList
+//             ) {
+//            if(i.)
+//        }{
+//
+//        }
+//        loggedInAccount.BuyItem();
+//    }
 }
