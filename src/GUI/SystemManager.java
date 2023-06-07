@@ -1,8 +1,11 @@
 package GUI;
 
-import Implementation.Account;
+import Implementation.*;
+
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SystemManager {
     private ArrayList<Account> accounts = new ArrayList<>();
@@ -10,6 +13,8 @@ public class SystemManager {
     private boolean loginFlag=false;
     private static boolean initiatedFlag=false;
     private Account loggedInAccount;
+    private ArrayList<item> itemsList=new ArrayList<item>();
+    private Map<Account,ArrayList<PayBill>> availableBills = new HashMap<Account,ArrayList<PayBill>>();
 
     public static SystemManager singleINST(){
         if(single_instance == null){
@@ -23,6 +28,36 @@ public class SystemManager {
     }
 
     private void initiateData(){
+        //initiate accounts
+        accounts.add(new Account(5000,"12345"));
+        accounts.add(new Account(7000,"12345"));
+        accounts.add(new Account(1000,"12345"));
+        //initiate items
+        itemsList.add(new item(200,3));
+        itemsList.add(new item(400,4));
+        itemsList.add(new item(700.8,20));
+        itemsList.add(new item(300,1));
+        itemsList.add(new item(900,14));
+        //initiate bills for each account
+        //acc 1
+        ArrayList<PayBill> aPB = new ArrayList<PayBill>();
+        aPB.add(new PayBill(150,"gas"));
+        aPB.add(new PayBill(2000,"electricity"));
+        availableBills.put(accounts.get(0),aPB);
+        aPB.clear();
+        //acc 2
+        aPB.add(new PayBill(450,"gas"));
+        availableBills.put(accounts.get(1),aPB);
+        aPB.clear();
+        //acc3
+        aPB.add(new PayBill(450,"gas"));
+        aPB.add(new PayBill(450,"electricity"));
+        aPB.add(new PayBill(450,"land line"));
+        availableBills.put(accounts.get(2),aPB);
+        aPB.clear();
+
+
+
 
     }
 //🍎🍎🍎🍎🍎🍎🍎🍎🍎 login criteria number and password
