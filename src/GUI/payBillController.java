@@ -49,7 +49,6 @@ public class payBillController implements Initializable {
         String selectedBillName=availableBillsChoice.getValue().toString();
         boolean payBillState=sys.payBill(selectedBillName);
         if(payBillState){
-
             Main m = new Main();
             m.changeScene("Home.fxml");
         }
