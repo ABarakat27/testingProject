@@ -9,26 +9,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginController">
    <left>
-      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="77.0" layoutY="235.0" text="Banking System" textFill="WHITE">
+            <Label layoutX="90.0" layoutY="258.0" prefHeight="83.0" prefWidth="201.0" text="Banking System" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
          </children></AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="500.0" prefWidth="438.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="600.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="account_number" layoutX="115.0" layoutY="212.0" promptText="Account Number" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="password" layoutX="116.0" layoutY="267.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="docLoginbtn" layoutX="121.0" layoutY="337.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="31.0" prefWidth="128.0" style="-fx-background-color: #0598ff;" text="Login" textFill="WHITE" />
-            <Text fill="#0598ff" layoutX="125.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
+            <TextField fx:id="accountNumberField" layoutX="85.0" layoutY="209.0" prefHeight="28.0" prefWidth="200.0" promptText="Account Number" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="passwordField" layoutX="85.0" layoutY="272.0" prefHeight="28.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="Loginbtn" layoutX="121.0" layoutY="337.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="31.0" prefWidth="128.0" style="-fx-background-color: #0598ff;" text="Login" textFill="WHITE">
                <font>
-                  <Font size="21.0" />
+                  <Font size="18.0" />
+               </font></Button>
+            <Text fill="#0598ff" layoutX="133.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
+               <font>
+                  <Font size="22.0" />
                </font>
             </Text>
             <Label fx:id="statusLogin" layoutX="36.0" layoutY="445.0" prefHeight="18.0" prefWidth="297.0" />
