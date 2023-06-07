@@ -13,6 +13,7 @@ public class SystemManager {
     private boolean loginFlag=false;
     private static boolean initiatedFlag=false;
     private Account loggedInAccount;
+    private  Account Receiver;
     private ArrayList<item> itemsList=new ArrayList<item>();
 
 
@@ -74,6 +75,25 @@ public class SystemManager {
         }
         return loginFlag;
 
+
+    }
+
+    public Boolean Transfer(String accountNum ,double amount)  {
+        for(Account User : accounts){
+            if(User.getAccountNo().equals(accountNum)){
+                Receiver=User;
+                try {
+                    loggedInAccount.transfer(amount, Receiver);
+                }
+                catch (InsufficientBalanceException e){
+                    return  false;
+                }
+            }
+                return true;
+
+            }
+
+            return  false;
 
     }
 
