@@ -47,17 +47,19 @@ public class SystemManager {
         aPB.add(new PayBill(150,"gas"));
         aPB.add(new PayBill(2000,"electricity"));
         availableBills.put(accounts.get(0),aPB);
-        aPB.clear();
+//        aPB.clear();
         //acc 2
-        aPB.add(new PayBill(450,"gas"));
-        availableBills.put(accounts.get(1),aPB);
-        aPB.clear();
+        ArrayList<PayBill> aPB2 = new ArrayList<PayBill>();
+        aPB2.add(new PayBill(450,"gas"));
+        availableBills.put(accounts.get(1),aPB2);
+//        aPB.clear();
         //acc3
-        aPB.add(new PayBill(450,"gas"));
-        aPB.add(new PayBill(450,"electricity"));
-        aPB.add(new PayBill(450,"land line"));
-        availableBills.put(accounts.get(2),aPB);
-        aPB.clear();
+        ArrayList<PayBill> aPB3 = new ArrayList<PayBill>();
+        aPB3.add(new PayBill(450,"gas"));
+        aPB3.add(new PayBill(450,"electricity"));
+        aPB3.add(new PayBill(450,"land line"));
+        availableBills.put(accounts.get(2),aPB3);
+//        aPB.clear();
 
 
 
@@ -124,10 +126,12 @@ public class SystemManager {
 */
     public ArrayList<String> getAvailableBillsNames(){
         if(!loginFlag){
+            System.out.println("here null");
             return null;
         }
-        ArrayList<String> billNames=new ArrayList<>();
+        ArrayList<String> billNames=new ArrayList<String>();
         ArrayList<PayBill> bills = availableBills.get(loggedInAccount);
+        System.out.println(bills);
         for(int i=0;i<bills.size();i++){
             PayBill bill=bills.get(i);
             billNames.add(bill.getName());
@@ -150,7 +154,6 @@ public class SystemManager {
             ArrayList<PayBill> bills = availableBills.get(loggedInAccount);
             PayBill bill=null;
             for(int i=0;i<bills.size();i++){
-                String actualBillName=bills.get(i).getName().split()
                 if(billName==bills.get(i).getName()) {
                     bill = bills.get(i);
                 }
