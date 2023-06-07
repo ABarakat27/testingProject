@@ -175,4 +175,8 @@ public class SystemManager {
 //        Map<String, ArrayList<BankStatement>> statementMap=loggedInAccount.getStatements();
 //        return
 //    }
+        public ArrayList<String> getStatements(){
+        return loggedInAccount.getNotifications();
+
+    }
 }

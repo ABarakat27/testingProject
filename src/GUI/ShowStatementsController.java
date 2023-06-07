@@ -21,7 +21,7 @@ public class ShowStatementsController implements Initializable {
         private Button backBtn;
         SystemManager sys=SystemManager.singleINST();
     public void initialize(URL url, ResourceBundle rb){
-        ArrayList<String> statements= sys.g();
+       // ArrayList<String> statements= sys.g();
     }
         @FXML
         void Back(ActionEvent event) {
