@@ -2,6 +2,7 @@ package GUI;
 
 import Implementation.Account;
 import Implementation.BankStatement;
+import Implementation.PayBill;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -10,6 +11,7 @@ public class SystemManager {
     private ArrayList<Account> accounts = new ArrayList<>();
     private static SystemManager single_instance=null;
     private boolean loginFlag=false;
+    private Map<Account,ArrayList<PayBill>>;
     private static boolean initiatedFlag=false;
     private Account loggedInAccount;
 
