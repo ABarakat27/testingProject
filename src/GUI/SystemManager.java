@@ -1,9 +1,9 @@
 package GUI;
 
-import Implementation.Account;
-import Implementation.BankStatement;
+import Implementation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class SystemManager {
@@ -11,7 +11,9 @@ public class SystemManager {
     private static SystemManager single_instance=null;
     private boolean loginFlag=false;
     private static boolean initiatedFlag=false;
-    private Account loggedInAccount;
+    private Account loggedInAccount=null;
+    private Map<Account,ArrayList<PayBill>> availableBills = new HashMap<Account,ArrayList<PayBill>>();
+    private ArrayList<item> itemsList=new ArrayList<>();
 
     public static SystemManager singleINST(){
         if(single_instance == null){
@@ -31,7 +33,7 @@ public class SystemManager {
 //    public boolean userLogin(string accountNum,string password){
 //
 //    }
-/*
+
     public double getAccountBalance(){
         return loggedInAccount.getBalance();
     }
@@ -39,7 +41,7 @@ public class SystemManager {
         return loggedInAccount.getStatements();
     }
     //account number🍎🍎🍎🍎🍎🍎🍎
-    public boolean transfer(double amount,string toAccountNum){
+    public boolean transfer(double amount,String toAccountNum){
         try{
             loggedInAccount.transfer(amount,toAccountNum);
             return true;
@@ -50,9 +52,9 @@ public class SystemManager {
 
     }
     //itemId or itemName 🍎🍎🍎🍎🍎🍎
-    public boolean buyItem(string itemName ,int numofitems){
+    public boolean buyItem(String itemName ,int numofitems){
         try{
-            loggedInAccount.BuyItem(String itemName,numofitems);
+//            loggedInAccount.BuyItem(String itemName,numofitems);
             return true;
         }
         catch(Exception e){
@@ -60,14 +62,52 @@ public class SystemManager {
         }
     }
     //bill name 🍎🍎🍎🍎
-    public boolean payBill(string billName){
-        try{
-            loggedInAccount.payBill(billName);
-            return true;
+
+    public ArrayList<String> getAvailableBillsNames(){
+        if(!loginFlag){
+            return null;
         }
-        catch(Exception e){
+        ArrayList<String> billNames=new ArrayList<>();
+        ArrayList<PayBill> bills = availableBills.get(loggedInAccount);
+        for(int i=0;i<bills.size();i++){
+            PayBill bill=bills.get(i);
+            billNames.add(bill.getName());
+        }
+        return billNames;
+    }
+    public double getBillCost(String billName){
+        double billCost=-1;
+        ArrayList<PayBill> bills = availableBills.get(loggedInAccount);
+        for(int i=0;i<bills.size();i++){
+            PayBill bill=bills.get(i);
+            if(billName==bill.getName()){
+                billCost=bill.getCost();
+            }
+        }
+        return billCost;
+    }
+    public boolean payBill(String billName){
+        try{
+            ArrayList<PayBill> bills = availableBills.get(loggedInAccount);
+            PayBill bill=null;
+            for(int i=0;i<bills.size();i++){
+                String actualBillName=bills.get(i).getName().split()
+                if(billName==bills.get(i).getName()) {
+                    bill = bills.get(i);
+                }
+            }
+            if(bill!=null){
+                loggedInAccount.payBill(bill);
+                return true;
+            }
+            else{
+                return false;
+            }
+
+        }
+        catch(InsufficientBalanceException | PaidException e){
             return false;
         }
     }
-    */
+
 }
