@@ -31,7 +31,7 @@ public class SystemManager {
 //    public boolean userLogin(string accountNum,string password){
 //
 //    }
-
+/*
     public double getAccountBalance(){
         return loggedInAccount.getBalance();
     }
@@ -52,7 +52,7 @@ public class SystemManager {
     //itemId or itemName 🍎🍎🍎🍎🍎🍎
     public boolean buyItem(string itemName ,int numofitems){
         try{
-            loggedInAccount.BuyItem(string itemName,numofitems);
+            loggedInAccount.BuyItem(String itemName,numofitems);
             return true;
         }
         catch(Exception e){
@@ -69,5 +69,5 @@ public class SystemManager {
             return false;
         }
     }
-    
+    */
 }
