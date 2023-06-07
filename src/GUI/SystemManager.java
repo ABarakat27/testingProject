@@ -8,12 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SystemManager {
-    private ArrayList<Account> accounts = new ArrayList<>();
+    private ArrayList<Account> accounts = new ArrayList<Account>();
     private static SystemManager single_instance=null;
     private boolean loginFlag=false;
     private static boolean initiatedFlag=false;
     private Account loggedInAccount;
     private ArrayList<item> itemsList=new ArrayList<item>();
+
+
     private Map<Account,ArrayList<PayBill>> availableBills = new HashMap<Account,ArrayList<PayBill>>();
 
     public static SystemManager singleINST(){
@@ -60,10 +62,24 @@ public class SystemManager {
 
 
     }
+
 //🍎🍎🍎🍎🍎🍎🍎🍎🍎 login criteria number and password
-//    public boolean userLogin(string accountNum,string password){
-//
-//    }
+   public boolean userLogin(String accountNum,String password){
+        for(Account User : accounts){
+            if((User.getPassword() .equals(password) )&& User.getAccountNo().equals(accountNum)){
+                loggedInAccount=User;
+                loginFlag=true;
+                return loginFlag;
+            }
+        }
+        return loginFlag;
+
+
+    }
+
+
+
+
 /*
     public double getAccountBalance(){
         return loggedInAccount.getBalance();
