@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Account {
+    private static int counter =0;
+    private String accountNo;
+    private String password;
     private double Balance;
     private ArrayList<BankStatement> transferStatements = new ArrayList<BankStatement>();
     private ArrayList<BankStatement> buyItemsStatements = new ArrayList<BankStatement>();
@@ -16,9 +19,27 @@ public class Account {
 
     public Account(double amount) {
         Balance = amount;
+        accountNo="29910"+String.valueOf(counter);
+        counter++;
+
+
 
     }
+   public Account(double amount,String password){
+       Balance = amount;
+       accountNo="29910"+String.valueOf(counter);
+       counter++;
+       this.password=password;
 
+   }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getAccountNo() {
+        return accountNo;
+    }
 
     public double getBalance() {
         return Balance;
