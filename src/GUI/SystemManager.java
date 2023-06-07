@@ -171,8 +171,7 @@ public class SystemManager {
             return false;
         }
     }
-//    public String getStatements(){
-//        Map<String, ArrayList<BankStatement>> statementMap=loggedInAccount.getStatements();
-//        return
-//    }
+    public Map<String, ArrayList<BankStatement>> getStatements(){
+         return loggedInAccount.getStatements();
+    }
 }
