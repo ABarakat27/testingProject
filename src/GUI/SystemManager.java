@@ -1,10 +1,8 @@
 package GUI;
 
 import Implementation.Account;
-import Implementation.BankStatement;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class SystemManager {
     private ArrayList<Account> accounts = new ArrayList<>();
