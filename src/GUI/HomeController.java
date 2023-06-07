@@ -26,12 +26,13 @@ public class HomeController {
 
         @FXML
         private Button transferBtn;
-        public void initialize(URL url, ResourceBundle rb){
-
-        }
+        SystemManager sys=SystemManager.singleINST();
+//        public void initialize(URL url, ResourceBundle rb){
+//        }
         @FXML
-        void gotoBuyItem(ActionEvent event) {
-
+        void gotoBuyItem(ActionEvent event) throws IOException {
+                Main m = new Main();
+                m.changeScene("BuyItem.fxml");
         }
 
         @FXML
@@ -41,13 +42,15 @@ public class HomeController {
         }
 
         @FXML
-        void gotoShowStatements(ActionEvent event) {
-
+        void gotoShowStatements(ActionEvent event) throws IOException {
+                Main m = new Main();
+                m.changeScene("ShowStatements.fxml");
         }
 
         @FXML
-        void gotoTransfer(ActionEvent event) {
-
+        void gotoTransfer(ActionEvent event) throws IOException {
+                Main m = new Main();
+                m.changeScene("Transfer.fxml");
         }
 
 
