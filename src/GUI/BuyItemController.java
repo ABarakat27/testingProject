@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class BuyItemController implements Initializable {
@@ -30,23 +31,43 @@ public class BuyItemController implements Initializable {
         }
         @FXML
         void BuyItem(ActionEvent event) throws IOException {
-            String itemChosen = ItemBox.getSelectionModel().getSelectedItem().toString();
-            String numberOfItems=NumberOfItems.getText();
-            int nItems=-1;
-            try{
+            ArrayList<String> sList = sys.getNotifications();
+            Object itemChosen = ItemBox.getSelectionModel().getSelectedItem();
+            boolean buystate=false;
+            System.out.println("here item"+itemChosen);
+            if(itemChosen!=null){
+                String numberOfItems=NumberOfItems.getText();
+                int nItems=-1;
+                try{
                     nItems=Integer.parseInt(numberOfItems);
-            }
-            catch(NumberFormatException nfe){
-                buyItemStatus.setText("Please enter a valid number of items");
-                return;
-            }
-            boolean buystate=sys.buyItem(itemChosen,nItems);
-            if(buystate){
-                    Main m = new Main();
-                    m.changeScene("Home.fxml");
+                }
+                catch(NumberFormatException nfe){
+                    buyItemStatus.setText("Please enter a valid number of items");
+                }
+                buystate=sys.buyItem(itemChosen.toString(),nItems);
             }
             else{
-                    buyItemStatus.setText("Something went wrong, please try again!");
+                sys.failedNotification();
+            }
+            if (buystate) {
+                buyItemStatus.setText("");
+                Alert nott = new Alert(Alert.AlertType.INFORMATION);
+                nott.setTitle("Notification");
+                nott.setContentText(sList.get(sList.size() - 1));
+                nott.setHeaderText("Buy Item Transaction");
+                Optional<ButtonType> result = nott.showAndWait();
+                if (result.isPresent() && (result.get() == ButtonType.OK || result.get() == ButtonType.CANCEL || result.get() == ButtonType.CLOSE)) {
+                    Main m = new Main();
+                    m.changeScene("Home.fxml");
+                }
+                System.out.println("done transfer new new");
+            } else {
+                Alert nott = new Alert(Alert.AlertType.INFORMATION);
+                nott.setTitle("Notification");
+                nott.setContentText(sList.get(sList.size() - 1));
+                nott.setHeaderText("Buy Item Transaction");
+                nott.showAndWait();
+                buyItemStatus.setText("something is not right please check the entered data and try again ");
             }
         }
 

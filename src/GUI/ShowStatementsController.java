@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,11 +46,25 @@ public class ShowStatementsController implements Initializable {
             }
             System.out.println(payBillArr);
         }
+        for (String s:transferArr
+             ) {
+            accountStatements.getItems().add(s);
+        }
+        for (String s:buyItemArr
+        ) {
+            accountStatements.getItems().add(s);
+        }
+        for (String s:payBillArr
+        ) {
+            accountStatements.getItems().add(s);
+        }
+//        accountStatements.getItems().add(FXCollections.observableArrayList(transferArr).toString());
+//        accountStatements.getItems().add(FXCollections.observableArrayList(buyItemArr).toString());
+//        accountStatements.getItems().add(FXCollections.observableArrayList(payBillArr).toString());
 
-        accountStatements.getItems().add(FXCollections.observableArrayList(transferArr).toString());
-        accountStatements.getItems().add(FXCollections.observableArrayList(buyItemArr).toString());
-        accountStatements.getItems().add(FXCollections.observableArrayList(payBillArr).toString());
+
     }
+
         @FXML
         void Back(ActionEvent event) throws IOException {
             Main m = new Main();

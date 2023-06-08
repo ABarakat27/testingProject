@@ -3,14 +3,12 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class payBillController implements Initializable {
@@ -44,16 +42,36 @@ public class payBillController implements Initializable {
 //    });
     @FXML
     void payBill(ActionEvent event) throws IOException {
-
-        String selectedBillName=availableBillsChoice.getValue().toString();
-        boolean payBillState=sys.payBill(selectedBillName);
-        if(payBillState){
-            Main m = new Main();
-            m.changeScene("Home.fxml");
+        ArrayList<String> sList = sys.getNotifications();
+        Object selectedBillName=availableBillsChoice.getValue();
+        boolean payBillState=false;
+        if(selectedBillName!=null){
+            payBillState=sys.payBill(selectedBillName.toString());
         }
         else{
-            payBillStatusLabel.setText("Something went wrong, Please try again.");
+            sys.failedNotification();
         }
+        if (payBillState) {
+            payBillStatusLabel.setText("");
+            Alert nott = new Alert(Alert.AlertType.INFORMATION);
+            nott.setTitle("Notification");
+            nott.setContentText(sList.get(sList.size() - 1));
+            nott.setHeaderText("Pay Bill Transaction");
+            Optional<ButtonType> result = nott.showAndWait();
+            if (result.isPresent() && (result.get() == ButtonType.OK || result.get() == ButtonType.CANCEL || result.get() == ButtonType.CLOSE)) {
+                Main m = new Main();
+                m.changeScene("Home.fxml");
+            }
+        } else {
+            Alert nott = new Alert(Alert.AlertType.INFORMATION);
+            nott.setTitle("Notification");
+            nott.setContentText(sList.get(sList.size() - 1));
+            nott.setHeaderText("Pay Bill Transaction");
+            nott.showAndWait();
+
+            payBillStatusLabel.setText("something is not right please check the entered data and try again ");
+        }
+
     }
 
 }

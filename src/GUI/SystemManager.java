@@ -224,6 +224,8 @@ public class SystemManager {
         catch(InsufficientBalanceException |  Implementation.noOfItemsException e){
             return false;
         }
-
+    }
+    public void failedNotification(){
+        loggedInAccount.setFailedNotification();
     }
 }

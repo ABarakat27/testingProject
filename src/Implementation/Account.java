@@ -93,7 +93,7 @@ public class Account {
 
     public void BuyItem(item x, int noOfItems) throws InsufficientBalanceException,noOfItemsException {
 
-            if (noOfItems * x.getPrice() <= Balance && x.getNoOfItems() >= noOfItems) {
+            if (noOfItems * x.getPrice() <= Balance && x.getNoOfItems() >= noOfItems && noOfItems>0) {
                 Balance -= (noOfItems * x.getPrice());
                 x.setNoOfItems(x.getNoOfItems() - noOfItems);
 
