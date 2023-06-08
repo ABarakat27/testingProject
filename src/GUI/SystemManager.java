@@ -84,6 +84,10 @@ public class SystemManager {
         for(Account User : accounts){
             if(User.getAccountNo().equals(accountNum)){
                 Receiver=User;
+                if(Receiver.getAccountNo()==loggedInAccount.getAccountNo()){
+                    loggedInAccount.setFailedNotification();
+                    return false;
+                }
                 try {
                     loggedInAccount.transfer(amount, Receiver);
                     //System.out.println("this is the transfer size"+loggedInAccount.getNotifications().size());
@@ -104,11 +108,12 @@ public class SystemManager {
 
 
 
-/*
+
 
     public double getAccountBalance(){
         return loggedInAccount.getBalance();
     }
+    /*
     public Map<String, ArrayList<BankStatement>> getAccountStatements(){
         return loggedInAccount.getStatements();
     }

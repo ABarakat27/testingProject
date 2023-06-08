@@ -13,6 +13,8 @@
       <Text layoutX="438.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Number" wrappingWidth="118.9366455078125" />
       <TextField fx:id="accNoText" layoutX="536.0" layoutY="70.0" prefHeight="17.0" prefWidth="180.0" />
       <Button layoutX="346.0" layoutY="222.0" mnemonicParsing="false" onAction="#transferFunc" prefHeight="55.0" prefWidth="108.0" text="Transfer Amount" />
-      <Label fx:id="errorLabel" layoutX="297.0" layoutY="315.0" prefHeight="25.0" prefWidth="206.0" />
+      <Label fx:id="errorLabel" layoutX="255.0" layoutY="312.0" prefHeight="25.0" prefWidth="366.0" />
+      <Label layoutX="270.0" layoutY="28.0" prefHeight="17.0" prefWidth="146.0" text="Your Current Balance is :" />
+      <Label fx:id="balanceLabel" layoutX="416.0" layoutY="28.0" prefHeight="17.0" prefWidth="108.0" />
    </children>
 </Pane>
