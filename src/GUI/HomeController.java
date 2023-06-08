@@ -14,7 +14,8 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
         @FXML
         private Label accountBalanceLabel;
-
+        @FXML
+        private Button logOutBtn;
         @FXML
         private Label accountNumberLabel;
 
@@ -32,7 +33,7 @@ public class HomeController implements Initializable {
         SystemManager sys=SystemManager.singleINST();
         public void initialize(URL url, ResourceBundle rb){
                 accountNumberLabel.setText(sys.getAccountNumber());
-                accountBalanceLabel.setText(String.valueOf(sys.getAccountBalance()));
+                accountBalanceLabel.setText(String.valueOf(sys.getAccountBalance())+" EGP");
         }
         @FXML
         void gotoBuyItem(ActionEvent event) throws IOException {
@@ -57,7 +58,10 @@ public class HomeController implements Initializable {
                 Main m = new Main();
                 m.changeScene("Transfer.fxml");
         }
-
-
-
+        @FXML
+        void logOut(ActionEvent event) throws IOException {
+                sys.logOut();
+                Main m = new Main();
+                m.changeScene("Login.fxml");
+        }
 }

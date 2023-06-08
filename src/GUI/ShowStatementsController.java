@@ -2,11 +2,14 @@ package GUI;
 import Implementation.BankStatement;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,7 +20,8 @@ import java.util.ResourceBundle;
 public class ShowStatementsController implements Initializable {
         @FXML
         private ListView<String> accountStatements;
-
+    @FXML
+    private ImageView backImg;
         @FXML
         private Button backBtn;
         SystemManager sys=SystemManager.singleINST();
@@ -62,7 +66,17 @@ public class ShowStatementsController implements Initializable {
 //        accountStatements.getItems().add(FXCollections.observableArrayList(buyItemArr).toString());
 //        accountStatements.getItems().add(FXCollections.observableArrayList(payBillArr).toString());
 
-
+        backImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent)  {
+                Main m = new Main();
+                try {
+                    m.changeScene("Home.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
         @FXML

@@ -1,9 +1,13 @@
 package GUI;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,7 +24,8 @@ public class TransferController implements Initializable {
 
     @FXML
     private TextField amountText;
-
+    @FXML
+    private ImageView backImg;
     @FXML
     private Label errorLabel;
     SystemManager sys =SystemManager.singleINST();
@@ -63,6 +68,22 @@ public class TransferController implements Initializable {
     }
     public void initialize(URL url, ResourceBundle rb){
 
-        balanceLabel.setText(String.valueOf(sys.getAccountBalance()));
+        balanceLabel.setText(String.valueOf(sys.getAccountBalance())+" EGP");
+        backImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent)  {
+                Main m = new Main();
+                try {
+                    m.changeScene("Home.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+    @FXML
+    void Back(ActionEvent event) throws IOException {
+        Main m = new Main();
+        m.changeScene("Home.fxml");
     }
 }

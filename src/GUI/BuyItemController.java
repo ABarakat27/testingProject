@@ -1,9 +1,12 @@
 package GUI;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,13 +24,25 @@ public class BuyItemController implements Initializable {
         private Label itemCostLabel;
         @FXML
         private Button buyBtn;
-
+    @FXML
+    private ImageView backImg;
         @FXML
         private Label buyItemStatus;
         SystemManager sys = SystemManager.singleINST();
         public void initialize(URL url, ResourceBundle rb){
                 ArrayList<String> itemNames=sys.getItemsNames();
                 ItemBox.setItems(FXCollections.observableArrayList(itemNames));
+            backImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent)  {
+                    Main m = new Main();
+                    try {
+                        m.changeScene("Home.fxml");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
         }
         @FXML
         void BuyItem(ActionEvent event) throws IOException {
@@ -76,5 +91,9 @@ public class BuyItemController implements Initializable {
                 String itemSelected = ItemBox.getSelectionModel().getSelectedItem().toString();
                 itemCostLabel.setText(String.valueOf(sys.getItemCost(itemSelected)));
         }
-
+    @FXML
+    void Back(ActionEvent event) throws IOException {
+        Main m = new Main();
+        m.changeScene("Home.fxml");
+    }
 }
