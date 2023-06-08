@@ -69,7 +69,7 @@ public class SystemManager {
 
    public boolean userLogin(String accountNum,String password){
         for(Account User : accounts){
-            if((User.getPassword() .equals(password) )&& User.getAccountNo().equals(accountNum)){
+            if((User.getPassword().equals(password) )&& User.getAccountNo().equals(accountNum)){
                 loggedInAccount=User;
                 loginFlag=true;
                 return loginFlag;
@@ -230,5 +230,8 @@ public class SystemManager {
     }
     public String getAccountNumber(){
         return loggedInAccount.getAccountNo();
+    }
+    public void logOut(){
+        loggedInAccount=null;
     }
 }

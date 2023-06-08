@@ -25,7 +25,7 @@
          </font></Button>
       <Label fx:id="errorLabel" layoutX="405.0" layoutY="363.0" prefHeight="25.0" prefWidth="374.0">
          <font>
-            <Font size="14.0" />
+            <Font size="10.0" />
          </font></Label>
       <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #0598ff;">
          <children>
@@ -46,5 +46,15 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <Button fx:id="backBtn" layoutX="663.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" prefHeight="40.0" prefWidth="123.0" style="-fx-background-color: #0598ff;" text="Back" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="backImg" fitHeight="37.0" fitWidth="79.0" layoutX="663.0" layoutY="16.0" onMouseClicked="#Back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@exit-door-svgrepo-com.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

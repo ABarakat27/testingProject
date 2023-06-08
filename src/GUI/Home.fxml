@@ -20,7 +20,7 @@
             <Image url="@tree-list-svgrepo-com.png" />
          </image>
       </ImageView>
-      <Button fx:id="payBillBtn" layoutX="548.0" layoutY="90.0" mnemonicParsing="false" onAction="#gotoPayBill" prefHeight="67.0" prefWidth="120.0" style="-fx-background-color: #0598ff;" text="Pay Bill" textFill="WHITE">
+      <Button fx:id="payBillBtn" layoutX="548.0" layoutY="88.0" mnemonicParsing="false" onAction="#gotoPayBill" prefHeight="67.0" prefWidth="120.0" style="-fx-background-color: #0598ff;" text="Pay Bill" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -47,6 +47,11 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <Button fx:id="logOutBtn" layoutX="262.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="123.0" style="-fx-background-color: white;" text="Log Out">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
       <Button fx:id="transferBtn" layoutX="558.0" layoutY="184.0" mnemonicParsing="false" onAction="#gotoTransfer" prefHeight="67.0" prefWidth="146.0" style="-fx-background-color: #0598ff;" text="Transfer" textFill="WHITE">
          <font>

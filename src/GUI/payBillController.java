@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.event.EventHandler;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,13 +22,25 @@ public class payBillController implements Initializable {
     private Label billCostLabel;
     @FXML
     private Button payBillBtn;
-
+    @FXML
+    private ImageView backImg;
     @FXML
     private Label payBillStatusLabel;
     SystemManager sys = SystemManager.singleINST();
     public void initialize(URL url, ResourceBundle rb){
         ArrayList<String> bills= sys.getAvailableBillsNames();
         availableBillsChoice.setItems(FXCollections.observableArrayList(bills));
+        backImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent)  {
+                Main m = new Main();
+                try {
+                    m.changeScene("Home.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
     @FXML
     void choiceClick(ActionEvent event) throws IOException {
@@ -72,6 +87,11 @@ public class payBillController implements Initializable {
             payBillStatusLabel.setText("something is not right please check the entered data and try again ");
         }
 
+    }
+    @FXML
+    void Back(ActionEvent event) throws IOException {
+        Main m = new Main();
+        m.changeScene("Home.fxml");
     }
 
 }

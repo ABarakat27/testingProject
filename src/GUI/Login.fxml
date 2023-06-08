@@ -41,7 +41,7 @@
                   <Font size="22.0" />
                </font>
             </Text>
-            <Label fx:id="buyItemStatus" layoutX="36.0" layoutY="445.0" prefHeight="18.0" prefWidth="297.0" />
+            <Label fx:id="statusLogin" layoutX="36.0" layoutY="445.0" prefHeight="18.0" prefWidth="297.0" />
            
          </children>
       </AnchorPane>
