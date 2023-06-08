@@ -86,15 +86,17 @@ public class SystemManager {
                 Receiver=User;
                 try {
                     loggedInAccount.transfer(amount, Receiver);
+                    //System.out.println("this is the transfer size"+loggedInAccount.getNotifications().size());
+                    return true;
                 }
                 catch (InsufficientBalanceException e){
                     return  false;
                 }
             }
-                return true;
+
 
             }
-
+            loggedInAccount.setFailedNotification();
             return  false;
 
     }
@@ -171,17 +173,13 @@ public class SystemManager {
             return false;
         }
     }
-    public Map<String, ArrayList<BankStatement>> getStatements(){
-         return loggedInAccount.getStatements();
+
+        public ArrayList<String> getNotifications(){
+          //  System.out.println("this is the size"+loggedInAccount.getNotifications().size());
+        return loggedInAccount.getNotifications();
+
     }
-//    public boolean buyItem(String itemName,int n){
-//        item myItem=null;
-//        for (item i:itemsList
-//             ) {
-//            if(i.)
-//        }{
-//
-//        }
-//        loggedInAccount.BuyItem();
-//    }
+    public Map<String, ArrayList<BankStatement>> getStatements(){
+        return loggedInAccount.getStatements();
+    }
 }

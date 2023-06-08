@@ -134,4 +134,8 @@ public class Account {
         }
 
     }
+
+    public void setFailedNotification(){
+        notifications.add(notifyUser(false));
+    }
 }
