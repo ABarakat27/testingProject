@@ -171,8 +171,17 @@ public class SystemManager {
             return false;
         }
     }
-//    public String getStatements(){
-//        Map<String, ArrayList<BankStatement>> statementMap=loggedInAccount.getStatements();
-//        return
+    public Map<String, ArrayList<BankStatement>> getStatements(){
+         return loggedInAccount.getStatements();
+    }
+//    public boolean buyItem(String itemName,int n){
+//        item myItem=null;
+//        for (item i:itemsList
+//             ) {
+//            if(i.)
+//        }{
+//
+//        }
+//        loggedInAccount.BuyItem();
 //    }
 }
