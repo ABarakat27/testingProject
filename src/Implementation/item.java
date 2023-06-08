@@ -33,4 +33,5 @@ public class item {
     public void setPrice(double price) {
         this.price = price;
     }
+    public String getItemName(){return this.itemName;}
 }
