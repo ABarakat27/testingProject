@@ -228,4 +228,7 @@ public class SystemManager {
     public void failedNotification(){
         loggedInAccount.setFailedNotification();
     }
+    public String getAccountNumber(){
+        return loggedInAccount.getAccountNo();
+    }
 }

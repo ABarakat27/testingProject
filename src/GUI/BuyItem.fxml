@@ -4,42 +4,46 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BuyItemController">
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="90.0" layoutY="258.0" prefHeight="83.0" prefWidth="201.0" text="Banking System" textFill="WHITE">
+            <Label layoutX="113.0" layoutY="108.0" prefHeight="83.0" prefWidth="198.0" text="Buy Items" textFill="WHITE">
                <font>
-                  <Font size="28.0" />
+                  <Font name="System Bold" size="32.0" />
                </font>
             </Label>
+            <ImageView fitHeight="297.0" fitWidth="331.0" layoutX="14.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@shopping-cart-svgrepo-com.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
    </left>
    <right>
       <AnchorPane prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="buyBtn" layoutX="116.0" layoutY="330.0" mnemonicParsing="false" onAction="#BuyItem" prefHeight="31.0" prefWidth="128.0" style="-fx-background-color: #0598ff;" text="Buy" textFill="WHITE">
+            <Button fx:id="buyBtn" layoutX="231.0" layoutY="332.0" mnemonicParsing="false" onAction="#BuyItem" prefHeight="31.0" prefWidth="128.0" style="-fx-background-color: #0598ff;" text="Buy" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Text fill="#0598ff" layoutX="133.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buy Items">
+            <Label fx:id="buyItemStatus" layoutX="10.0" layoutY="386.0" prefHeight="55.0" prefWidth="384.0">
                <font>
-                  <Font size="22.0" />
-               </font>
-            </Text>
-            <Label fx:id="buyItemStatus" layoutX="36.0" layoutY="445.0" prefHeight="18.0" prefWidth="297.0" />
-            <ComboBox fx:id="ItemBox" layoutX="109.0" layoutY="208.0" onAction="#itemChoiceClick" prefHeight="26.0" prefWidth="142.0" promptText="Select Item" />
-            <Label fx:id="itemCostLabel" layoutX="296.0" layoutY="213.0">
+                  <Font size="14.0" />
+               </font></Label>
+            <ComboBox fx:id="ItemBox" layoutX="86.0" layoutY="170.0" onAction="#itemChoiceClick" prefHeight="58.0" prefWidth="198.0" promptText="Select Item" />
+            <Label fx:id="itemCostLabel" layoutX="295.0" layoutY="180.0" prefHeight="38.0" prefWidth="84.0">
                <font>
-                  <Font size="16.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="NumberOfItems" layoutX="103.0" layoutY="262.0" prefHeight="28.0" prefWidth="153.0" promptText="number of items" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="NumberOfItems" layoutX="86.0" layoutY="263.0" prefHeight="50.0" prefWidth="198.0" promptText="Number of items" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
            
          </children>
       </AnchorPane>

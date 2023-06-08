@@ -1,29 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HomeController">
    <children>
-      <Button fx:id="payBillBtn" layoutX="106.0" layoutY="340.0" mnemonicParsing="false" onAction="#gotoPayBill" style="-fx-background-color: #0598ff;" text="Pay Bill" textFill="WHITE">
+      <ImageView fitHeight="86.0" fitWidth="88.0" layoutX="462.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@book-opened-svgrepo-com.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="395.0" fitWidth="400.0" layoutX="405.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@tree-list-svgrepo-com.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="payBillBtn" layoutX="548.0" layoutY="90.0" mnemonicParsing="false" onAction="#gotoPayBill" prefHeight="67.0" prefWidth="120.0" style="-fx-background-color: #0598ff;" text="Pay Bill" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <AnchorPane layoutX="400.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #0598ff;" />
-      <Button fx:id="transferBtn" layoutX="274.0" layoutY="340.0" mnemonicParsing="false" onAction="#gotoTransfer" style="-fx-background-color: #0598ff;" text="Transfer" textFill="WHITE">
+      <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #0598ff;">
+         <children>
+            <ImageView fitHeight="120.0" fitWidth="130.0" layoutX="14.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@user-card-id-svgrepo-com.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="accountNumberLabel" layoutX="162.0" layoutY="169.0" prefHeight="30.0" prefWidth="161.0" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="107.0" fitWidth="102.0" layoutX="23.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@coin-clatter-svgrepo-com.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="accountBalanceLabel" layoutX="162.0" layoutY="370.0" prefHeight="30.0" prefWidth="162.0" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <Button fx:id="transferBtn" layoutX="558.0" layoutY="184.0" mnemonicParsing="false" onAction="#gotoTransfer" prefHeight="67.0" prefWidth="146.0" style="-fx-background-color: #0598ff;" text="Transfer" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="buyItemBtn" layoutX="271.0" layoutY="421.0" mnemonicParsing="false" onAction="#gotoBuyItem" style="-fx-background-color: #0598ff;" text="Buy Item" textFill="WHITE">
+      <Button fx:id="buyItemBtn" layoutX="558.0" layoutY="275.0" mnemonicParsing="false" onAction="#gotoBuyItem" prefHeight="67.0" prefWidth="187.0" style="-fx-background-color: #0598ff;" text="Buy Item" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="showStatementBtn" layoutX="66.0" layoutY="421.0" mnemonicParsing="false" onAction="#gotoShowStatements" style="-fx-background-color: #0598ff;" text="Show Statements" textFill="WHITE">
+      <Button fx:id="showStatementBtn" layoutX="587.0" layoutY="481.0" mnemonicParsing="false" onAction="#gotoShowStatements" style="-fx-background-color: #0598ff;" text="Show Statements" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
