@@ -27,7 +27,6 @@ public class payBillController implements Initializable {
     SystemManager sys = SystemManager.singleINST();
     public void initialize(URL url, ResourceBundle rb){
         ArrayList<String> bills= sys.getAvailableBillsNames();
-        System.out.println(bills);
         availableBillsChoice.setItems(FXCollections.observableArrayList(bills));
     }
     @FXML

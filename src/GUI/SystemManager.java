@@ -187,4 +187,43 @@ public class SystemManager {
     public Map<String, ArrayList<BankStatement>> getStatements(){
         return loggedInAccount.getStatements();
     }
+    public ArrayList<String> getItemsNames(){
+        ArrayList<String> itemNames= new ArrayList<String>();
+        for (item i:itemsList
+             ) {
+            itemNames.add(i.getItemName());
+        }
+        return itemNames;
+    }
+    public double getItemCost(String itemName){
+        for (item i:itemsList
+             ) {
+            if(i.getItemName()==itemName){
+                return i.getPrice();
+            }
+        }
+        return -1;
+    }
+    public boolean buyItem(String itemName,int noItems) {
+        try {
+            item chosenItem = null;
+            for (item i : itemsList
+            ) {
+                if (i.getItemName() == itemName) {
+                    chosenItem = i;
+                }
+            }
+            if (chosenItem != null) {
+                loggedInAccount.BuyItem(chosenItem, noItems);
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch(InsufficientBalanceException |  Implementation.noOfItemsException e){
+            return false;
+        }
+
+    }
 }
