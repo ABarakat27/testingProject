@@ -77,7 +77,7 @@ public class Account {
 
 
     public void transfer(double amount, Account x) throws InsufficientBalanceException {
-        if (Balance >= amount) {
+        if (Balance >= amount&& amount>0) {
             x.setBalance(x.getBalance() + amount);
             Balance -= amount;
             transferStatements.add(intiateAStatement("transfer", amount));

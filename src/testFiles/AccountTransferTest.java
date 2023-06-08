@@ -55,10 +55,10 @@ public class AccountTransferTest {
 
         try {
             x.transfer(-11, y);
-
+            assertEquals(6000,x.getBalance(),0.1);
 
         } catch (InsufficientBalanceException e) {
-            assertEquals(6000,x.getBalance(),0.1);
+
         }
 
     }
