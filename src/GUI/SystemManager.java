@@ -36,11 +36,11 @@ public class SystemManager {
         accounts.add(new Account(7000,"12345"));
         accounts.add(new Account(1000,"12345"));
         //initiate items
-        itemsList.add(new item(200,3));
-        itemsList.add(new item(400,4));
-        itemsList.add(new item(700.8,20));
-        itemsList.add(new item(300,1));
-        itemsList.add(new item(900,14));
+        itemsList.add(new item(200,3,"shoes"));
+        itemsList.add(new item(400,4,"samsung flip flop"));
+        itemsList.add(new item(700.8,20,"apple tok tok"));
+        itemsList.add(new item(300,1,"phone case"));
+        itemsList.add(new item(900,14,"toy car"));
         //initiate bills for each account
         //acc 1
         ArrayList<PayBill> aPB = new ArrayList<PayBill>();
