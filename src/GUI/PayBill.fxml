@@ -18,7 +18,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Label fx:id="payBillStatusLabel" layoutX="399.0" layoutY="212.0" textFill="RED">
+      <Label fx:id="payBillStatusLabel" layoutX="399.0" layoutY="212.0">
          <font>
             <Font size="16.0" />
          </font>
