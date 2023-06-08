@@ -25,14 +25,13 @@ public class BuyItemTest {
     public void BuyItemTest() {
             try {
                 x.BuyItem(y, 5);
-                assertEquals(3000, x.getBalance(), 0.1);
-                assertEquals(5, y.getNoOfItems());
+
             }catch(InsufficientBalanceException|noOfItemsException e){
-                assertEquals(4000, x.getBalance(), 0.1);
-                assertEquals(10, y.getNoOfItems());
+
             }
 
-
+        assertEquals(3000, x.getBalance(), 0.1);
+        assertEquals(5, y.getNoOfItems());
 
 
     }
@@ -44,9 +43,10 @@ public class BuyItemTest {
             x.BuyItem(g, 1);
 
         }catch(InsufficientBalanceException|noOfItemsException e){
-            assertEquals(4000, x.getBalance(), 0.1);
-            assertEquals(1, g.getNoOfItems());
+
         }
+        assertEquals(4000, x.getBalance(), 0.1);
+        assertEquals(1, g.getNoOfItems());
     }
 
     @Test
@@ -57,9 +57,24 @@ public class BuyItemTest {
             x.BuyItem(g, 20);
 
         }catch(InsufficientBalanceException|noOfItemsException e){
-            assertEquals(4000, x.getBalance(), 0.1);
-            assertEquals(1, g.getNoOfItems());
+
         }
+        assertEquals(4000, x.getBalance(), 0.1);
+        assertEquals(1, g.getNoOfItems());
+    }
+    @Test
+    public void NegativeNoItems() {
+
+
+        try {
+            x.BuyItem(y, -4);
+
+        }catch(InsufficientBalanceException|noOfItemsException e){
+
+        }
+        assertEquals(4000, x.getBalance(), 0.1);
+        assertEquals(10, y.getNoOfItems());
     }
 
-    }
+}
+

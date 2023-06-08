@@ -27,33 +27,36 @@ public class ShowStatementTest {
     public void showBankStatementTransfer() {
         try {
             a.transfer(3000, b);
-            assertEquals("transfer",a.getStatements().get("transfer").get(0).getOperationType());
-            assertEquals("3000.0",a.getStatements().get("transfer").get(0).getAmount());
-            assertNotNull(a.getStatements().get("transfer").get(0).getAmount());
+
         }catch (InsufficientBalanceException e){
 
         }
+        assertEquals("transfer",a.getStatements().get("transfer").get(0).getOperationType());
+        assertEquals("3000.0",a.getStatements().get("transfer").get(0).getAmount());
+        assertNotNull(a.getStatements().get("transfer").get(0).getAmount());
     }
     @org.junit.Test
     public void showBankStatementPayBill() {
         try {
             a.payBill(p);
-            assertEquals("PayBill",a.getStatements().get("PayBill").get(0).getOperationType());
-            assertEquals("15.0",a.getStatements().get("PayBill").get(0).getAmount());
-            assertNotNull(a.getStatements().get("PayBill").get(0).getAmount());
+
         }catch (PaidException|InsufficientBalanceException e){
 
         }
+        assertEquals("PayBill",a.getStatements().get("PayBill").get(0).getOperationType());
+        assertEquals("15.0",a.getStatements().get("PayBill").get(0).getAmount());
+        assertNotNull(a.getStatements().get("PayBill").get(0).getAmount());
     }
     @org.junit.Test
     public void showBankStatementBuyItem() {
         try {
             a.BuyItem(i,2);
-            assertEquals("BuyItem",a.getStatements().get("BuyItem").get(0).getOperationType());
-            assertEquals("30.0",a.getStatements().get("BuyItem").get(0).getAmount());
-            assertNotNull(a.getStatements().get("BuyItem").get(0).getAmount());
+
         }catch (noOfItemsException|InsufficientBalanceException e){
 
         }
+        assertEquals("BuyItem",a.getStatements().get("BuyItem").get(0).getOperationType());
+        assertEquals("30.0",a.getStatements().get("BuyItem").get(0).getAmount());
+        assertNotNull(a.getStatements().get("BuyItem").get(0).getAmount());
     }
 }

@@ -24,12 +24,12 @@ public class PayBillTest {
     public void PayBillTest()  {
         try {
             x.payBill(pb);
-            assertEquals(3500.0, x.getBalance(), 0.1);
+
         }
         catch (PaidException|InsufficientBalanceException e ){
 
         }
-
+        assertEquals(3500.0, x.getBalance(), 0.1);
     }
 
 
@@ -40,9 +40,9 @@ public class PayBillTest {
 
         }
         catch (PaidException|InsufficientBalanceException e ){
-            assertEquals(3500.0, x.getBalance(), 0.1);
-        }
 
+        }
+        assertEquals(3500.0, x.getBalance(), 0.1);
     }
     @Test
     public void PayBillInsufficientBalanceTest()  {
@@ -51,9 +51,9 @@ public class PayBillTest {
             l.payBill(g);
         }
         catch (PaidException|InsufficientBalanceException e ){
-            assertEquals(50.0, l.getBalance(), 0.1);
-        }
 
+        }
+        assertEquals(50.0, l.getBalance(), 0.1);
     }
 
 }
