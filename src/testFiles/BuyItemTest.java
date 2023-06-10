@@ -4,6 +4,7 @@ import Implementation.Account;
 import Implementation.InsufficientBalanceException;
 import Implementation.item;
 import Implementation.noOfItemsException;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -13,9 +14,11 @@ public class BuyItemTest {
     static Account x ;
     static  item y;
     static  item g;
+    static long startTime;
+    static long stopTime;
     @BeforeClass
     public static void start(){
-
+        startTime = System.nanoTime();
         x=new Account(4000);
         y=new item(200,10);
         g =new item(5000,1);
@@ -74,6 +77,12 @@ public class BuyItemTest {
         }
         assertEquals(4000, x.getBalance(), 0.1);
         assertEquals(10, y.getNoOfItems());
+    }
+    @AfterClass
+    public static void end(){
+        stopTime = System.nanoTime();
+        System.out.println("Execution time of  BuyItemTest in nano Seconds : "+(stopTime - startTime));
+        System.out.println("End testing");
     }
 
 }

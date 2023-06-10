@@ -3,6 +3,7 @@ package testFiles;
 
 import Implementation.Account;
 import Implementation.InsufficientBalanceException;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -14,8 +15,12 @@ public class AccountTransferTest {
 
     static Account x;
     static Account y;
+    static long startTime;
+    static long stopTime;
     @BeforeClass
     public static void start() {
+        startTime = System.nanoTime();
+
 
         x = new Account(4000);
         y=new Account(5000);
@@ -62,6 +67,11 @@ public class AccountTransferTest {
         }
         assertEquals(6000,x.getBalance(),0.1);
     }
-
+    @AfterClass
+    public static void end(){
+        stopTime = System.nanoTime();
+        System.out.println("Execution time of  AccountTransferTest in nano Seconds : "+(stopTime - startTime));
+        System.out.println("End testing");
+    }
 
 }

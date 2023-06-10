@@ -1,6 +1,7 @@
 package testFiles;
 
 import Implementation.*;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -11,9 +12,13 @@ public class PayBillTest {
     static PayBill pb;
     static PayBill g;
     static Account l;
+    static long startTime;
+    static long stopTime;
+
     @BeforeClass
     public static void start(){
 
+        startTime = System.nanoTime();
         x=new Account(4000);
         pb=new PayBill(500.0,"electricity");
         g=new PayBill(5000.0,"gas");
@@ -56,4 +61,11 @@ public class PayBillTest {
         assertEquals(50.0, l.getBalance(), 0.1);
     }
 
+
+    @AfterClass
+    public static void end(){
+        stopTime = System.nanoTime();
+        System.out.println("Execution time of  PayBillTest in nano Seconds : "+(stopTime - startTime));
+        System.out.println("End testing");
+    }
 }

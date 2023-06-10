@@ -1,6 +1,7 @@
 package testFiles;
 
 import Implementation.*;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -16,9 +17,11 @@ public class NotifyUserTest {
     static  item i;
     static  PayBill pb;
     static  PayBill g;
+    static long startTime;
+    static long stopTime;
     @BeforeClass
     public static void start()  {
-
+        startTime = System.nanoTime();
      a = new Account(5000);
      b = new Account(5000);
      i = new item(15, 3);
@@ -84,5 +87,10 @@ public class NotifyUserTest {
         assertEquals("A failed transaction has been made", a.getNotifications().get(3));
     }
 
-
+    @AfterClass
+    public static void end(){
+        stopTime = System.nanoTime();
+        System.out.println("Execution time of  NotifyUserTest in nano Seconds : "+(stopTime - startTime));
+        System.out.println("End testing");
+    }
 }
