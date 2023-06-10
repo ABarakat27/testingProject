@@ -1,6 +1,7 @@
 package testFiles;
 
 import Implementation.*;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
 import java.util.ArrayList;
@@ -15,8 +16,12 @@ public class ShowStatementTest {
     static Account b ;
     static PayBill p ;
     static item i ;
+    static long startTime;
+    static long stopTime;
     @BeforeClass
     public static void start(){
+
+        startTime = System.nanoTime();
         a =new Account(5000) ;
         b =new Account(5000) ;
         p=new PayBill(15,"Gas");
@@ -58,5 +63,11 @@ public class ShowStatementTest {
         assertEquals("BuyItem",a.getStatements().get("BuyItem").get(0).getOperationType());
         assertEquals("30.0",a.getStatements().get("BuyItem").get(0).getAmount());
         assertNotNull(a.getStatements().get("BuyItem").get(0).getAmount());
+    }
+    @AfterClass
+    public static void end(){
+        stopTime = System.nanoTime();
+        System.out.println("Execution time of  ShowStatementTest in nano Seconds : "+(stopTime - startTime));
+        System.out.println("End testing");
     }
 }
